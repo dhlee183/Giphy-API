@@ -22,6 +22,8 @@ $(document).ready(function() {
 
 		var p = $('<p>').text( "Rating: " + rating);
 
+		p.addClass('ratings')
+
 		animalDiv.append(p);
 
 		var img = $('<img>')

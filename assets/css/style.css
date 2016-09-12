@@ -1,0 +1,59 @@
+#buttonsView {
+	margin-left: 10px;
+}
+
+.animal {
+	background: teal;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	padding: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+
+#animal-form {
+	margin-top: 25px;
+	margin-left: 10px;
+	width: 30%;
+	position: relative;
+	float: left;
+}
+
+#animalLabel {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#animal-input {
+	margin-top: 10px;
+	width: 80%;
+} 
+
+#addAnimal {
+	background: teal;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	padding: 10px;
+	margin-top: 10px;
+	font-size: 16px;
+}
+
+#animalsView {
+	width: 60%;
+	position: relative;
+	float: left;
+}
+
+.ratings {
+	font-weight: bold;
+	font-size: 18px;
+	margin-top: 25px;
+	margin-bottom: 15px;
+}
+
+.animalImg {
+	width: 100%;
+}
