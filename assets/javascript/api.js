@@ -85,9 +85,17 @@ $(document).ready(function() {
 
 		var animalPick = $('#animal-input').val().trim();
 
-		animals.push(animalPick);
+		if (animalPick == "") {
+
+			return false
+		}
+		else {
+
+			animals.push(animalPick);
 		
-		renderButtons();
+			renderButtons();
+
+		}
 
 		$('#animal-input').val("");
 
