@@ -89,6 +89,8 @@ $(document).ready(function() {
 		
 		renderButtons();
 
+		$('#animal-input').val("");
+
 		return false;
 	})
 
