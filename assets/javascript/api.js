@@ -1,32 +1,30 @@
 $(document).ready(function() {
 
-	// Array of animals displayed when the page loads
-	var animals = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', 'ferret', 'turtle', 
-					'sugar glider', 'chinchilla', 'hedgehog', 'hermit crab', 'gerbil', 'pygmy goat',
-					'chicken', 'capybara', 'teacup pig', 'serval', 'salamander', 'frog'];
+	// Array of comic book characters displayed when the page loads
+	var comicsChar = ['batman', 'spiderman', 'captain america', 'superman', 'green lantern', 'hulk', 'thor'];
 
 	// Function to generate the ratings and gifs in the HTML
-	function displayAnimalInfo(){
+	function displayCharInfo(){
 
-	// Variable created to give each of the animals an attribute of data-name	
-	var animalSelection = $(this).attr('data-name');
+	// Variable created to give each of the characters an attribute of data-name	
+	var comicSelection = $(this).attr('data-name');
 
-	// Variable created for the Giphy API link with search parameters (q) using the animalSelection variable, 
+	// Variable created for the Giphy API link with search parameters (q) using the comicSelection variable, 
 	// rating parameter, limit parameter set to 10, and the public API key  
-	var queryURL = 'http://api.giphy.com/v1/gifs/search?q='  + animalSelection + "&rating=&limit=10&api_key=dc6zaTOxFJmzC";
+	var queryURL = 'http://api.giphy.com/v1/gifs/search?q='  + comicSelection + "&rating=&limit=10&api_key=dc6zaTOxFJmzC";
 
-	// AJAX call is created for each of the animals being selected		
+	// AJAX call is created for each of the characters being selected		
 	$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 		console.log(response);
 
 		// This clears out the currents gifs so that when new gifs are selected they are not stacked on top of each other
-		$('#animalsView').empty()
+		$('#charactersView').empty()
 
 		// for loop to cycle through the gifs
 		for (i = 0; i < response.data.length; i++) {
 
-		// Variable created to dynamically generate a div with a class of animalInfo to hold the ratings and images
-		var animalDiv = $('<div class="animalInfo">');
+		// Variable created to dynamically generate a div with a class of characterInfo to hold the ratings and images
+		var characterDiv = $('<div class="characterInfo">');
 
 		// Variable to get the rating from the Giphy API
 		var rating = response.data[i].rating;
@@ -37,8 +35,8 @@ $(document).ready(function() {
 		// The p tag is given a class of ratings
 		p.addClass('ratings')
 
-		// The p tag is appended to the animal div created earlier
-		animalDiv.append(p);
+		// The p tag is appended to the character div created earlier
+		characterDiv.append(p);
 
 		// Variable created to dynamically generate an img tag
 		var img = $('<img>')
@@ -55,14 +53,14 @@ $(document).ready(function() {
 		// The img tag is given an attribute of data-state which is set equal to a value of still
 		img.attr("data-state", "still");
 
-		// The img tag is given a class of animalImg
-		img.addClass('animalImg')
+		// The img tag is given a class of characterImg
+		img.addClass('characterImg')
 
-		// The img tag is appended to the animal div created earlier
-		animalDiv.append(img);
+		// The img tag is appended to the character div created earlier
+		characterDiv.append(img);
 
-		// The dynamically created animal div is prepended to the animalsView div in the HTML to display the gif info
-		$('#animalsView').prepend(animalDiv);
+		// The dynamically created character div is prepended to the charactersView div in the HTML to display the gif info
+		$('#charactersView').prepend(characterDiv);
 
 		}
 	});
@@ -70,7 +68,7 @@ $(document).ready(function() {
 	};
 
 	// This event listener is used to play and pause the gif
-	$(document).on('click', '.animalImg', function() {
+	$(document).on('click', '.characterImg', function() {
 				
 		// Variable created to look for the data-state attribute on click of the gif
 		var state = $(this).attr('data-state');
@@ -88,60 +86,60 @@ $(document).ready(function() {
 
 	});
 
-	// Function to generate the animal buttons in the HTML
+	// Function to generate the character buttons in the HTML
 	function renderButtons(){ 
 
-		// This prevents repeat buttons and it removes animals prior to adding new animals
+		// This prevents repeat buttons and it removes comic book characters prior to adding new characters
 		$('#buttonsView').empty();
 
 		// for loop to cycle through the animals array
-		for (var i = 0; i < animals.length; i++){
+		for (var i = 0; i < comicsChar.length; i++){
 
 		    // Variable created to dynamically generate a button tag
 		    var a = $('<button>') 
 
-		    // Class of animal is added to the button tag
-		    a.addClass('animal');
+		    // Class of comics is added to the button tag
+		    a.addClass('comics');
 
-		    // Attribute of data-name is added to the button tag
-		    a.attr('data-name', animals[i]);
+		    // Attribute of data-name, which is equal to the specific character, is added to the button tag
+		    a.attr('data-name', comicsChar[i]);
 
 		    // Provides the initial button text
-		    a.text(animals[i]);
+		    a.text(comicsChar[i]);
 
 		    // This appends the button tag to the buttonsView div in the HTML
 		    $('#buttonsView').append(a); 
 		}
 	}
 
-	// Event listener for the submit buttom to add new animals to the button list
-	$('#addAnimal').on('click', function(){
+	// Event listener for the submit buttom to add new characters to the button list
+	$('#addChar').on('click', function(){
 
-		// Variable created for the new animals entered into the input line
-		var animalPick = $('#animal-input').val().trim();
+		// Variable created for the new characters entered into the input line
+		var characterPick = $('#character-input').val().trim();
 
-		// if/else statement created so that new buttons are only created when a user enters an animal into the input line (this prevents empty buttons from being created on click)
-		if (animalPick == "") {
+		// if/else statement created so that new buttons are only created when a user enters a character into the input line (this prevents empty buttons from being created on click)
+		if (characterPick == "") {
 
 			return false
 		}
 		else {
 
-			animals.push(animalPick);
+			comicsChar.push(characterPick);
 		
 			renderButtons();
 
 		}
 
-		// This clears out the input line after a new animal is submitted
-		$('#animal-input').val("");
+		// This clears out the input line after a new character is submitted
+		$('#character-input').val("");
 
-		// We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
+		// We have this line so that users can hit "enter" instead of clicking on the button and it won't move to the next page
 		return false;
 	})
 
-	// Event listener for when a user clicks on an animal button on the webpage it calls the displayAnimalInfo function to display the specific animals ratings and gifs
-	$(document).on('click', '.animal', displayAnimalInfo);
+	// Event listener for when a user clicks on a character button on the webpage it calls the displayCharInfo function to display the specific characters ratings and gifs
+	$(document).on('click', '.comics', displayCharInfo);
 
 	// This calls the renderButtons() function
 	renderButtons();

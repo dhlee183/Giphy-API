@@ -2,7 +2,7 @@
 	margin-left: 10px;
 }
 
-.animal {
+.comics {
 	background: teal;
 	color: white;
 	border: none;
@@ -13,7 +13,7 @@
 	font-size: 16px;
 }
 
-#animal-form {
+#character-form {
 	margin-top: 25px;
 	margin-left: 10px;
 	width: 30%;
@@ -21,17 +21,17 @@
 	float: left;
 }
 
-#animalLabel {
+#characterLabel {
 	font-weight: bold;
 	font-size: 18px;
 }
 
-#animal-input {
+#character-input {
 	margin-top: 10px;
-	width: 80%;
+	width: 60%;
 } 
 
-#addAnimal {
+#addChar {
 	background: teal;
 	color: white;
 	border: none;
@@ -41,7 +41,7 @@
 	font-size: 16px;
 }
 
-#animalsView {
+#charactersView {
 	width: 60%;
 	position: relative;
 	float: left;
@@ -54,7 +54,7 @@
 	margin-bottom: 15px;
 }
 
-.animalImg {
+.characterImg {
 	max-width: 100%;
 	height: auto;
 }
